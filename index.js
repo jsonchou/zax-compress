@@ -12,4 +12,4 @@ Object.assign(COMPRESS.prototype, {
     base64
 })
 
-module.exports = COMPRESS
+module.exports = new COMPRESS()

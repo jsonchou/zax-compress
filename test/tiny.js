@@ -1,8 +1,6 @@
-let zaxCompress = require('../index')
+let compress = require('../index')
 
-let config = require('./cfg')
-
-let compress = new zaxCompress()
+let config = require('./cfg') 
 
 const getResult = async () => {
     let result = await compress.tiny(config).catch(err => {

@@ -35,7 +35,7 @@ module.exports = function (options) {
     }
 
     if (klawSync(distPath).length) {
-        console.error(`  \u{1F602} dist is not empty, ${utilName} application will exit`)
+        console.error(`  \u{1F602} dist should be empty, ${utilName} application will exit`)
         process.exit()
     }
 
@@ -43,7 +43,7 @@ module.exports = function (options) {
         nodir: true
     })
     if (!srcFiles.length) {
-        console.error(`  \u{1F602} src is empty, ${utilName} application will exit`)
+        console.error(`  \u{1F602} src should not be empty, ${utilName} application will exit`)
         process.exit()
     } else {
         return new Promise((resolve, reject) => {

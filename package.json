@@ -1,6 +1,6 @@
 {
   "name": "zax-compress",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "directories": {
@@ -12,6 +12,8 @@
   "keywords": [
     "zax-compress",
     "compress",
+    "tiny",
+    "base64",
     "compress-image",
     "mozjpeg"
   ],

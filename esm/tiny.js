@@ -6,7 +6,7 @@ const doneRainbow = require('done-rainbow')
 const klawSync = require('klaw-sync')
 const asyncModule = require('async')
 
-const utils= require('../utils/index')
+const utils = require('../utils/index')
 
 const utilName = `compress.tiny`
 
@@ -61,7 +61,7 @@ module.exports = function (options) {
     }
 
     if (klawSync(distPath).length) {
-        console.error(`  \u{1F602} dist is not empty, ${utilName} application will exit`)
+        console.error(`  \u{1F602} dist should be empty, ${utilName} application will exit`)
         process.exit()
     }
 
@@ -69,7 +69,7 @@ module.exports = function (options) {
         nodir: true
     })
     if (!srcFiles.length) {
-        console.error(`  \u{1F602} src not empty, ${utilName} application will exit`)
+        console.error(`  \u{1F602} src should not be empty, ${utilName} application will exit`)
         process.exit()
     } else {
         return new Promise((resolve, reject) => {
