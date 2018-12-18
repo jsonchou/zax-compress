@@ -1,13 +1,13 @@
 {
   "name": "zax-compress",
-  "version": "0.0.5",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "version": "0.0.6",
+  "description": "dsp team compress tools",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   },
   "keywords": [
     "zax-compress",
@@ -34,4 +34,5 @@
     "klaw-sync": "^6.0.0",
     "mozjpeg": "^6.0.1"
   }
+
 }

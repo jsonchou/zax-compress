@@ -28,6 +28,11 @@ compress.base64({
     imageSrc: './src',
     imageDist: './dist',
 })
+
+# clean
+compress.base64({
+    imageDist: './dist',
+})
 ~~~
 
 ## TODO
