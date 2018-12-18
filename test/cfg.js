@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     quality: 75,
     enumFormat: ['.jpeg', '.jpg', '.png'],
