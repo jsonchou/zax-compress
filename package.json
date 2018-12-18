@@ -1,0 +1,34 @@
+{
+  "name": "zax-compress",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zax-compress",
+    "compress",
+    "compress-image",
+    "mozjpeg"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsonchou/zax-compress.git"
+  },
+  "homepage": "https://github.com/jsonchou/zax-compress",
+  "author": "jsonchou",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "async": "^2.6.1",
+    "done-rainbow": "0.0.1",
+    "execa": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "klaw-sync": "^6.0.0",
+    "mozjpeg": "^6.0.1"
+  }
+}
