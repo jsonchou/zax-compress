@@ -69,7 +69,7 @@ module.exports = function (options) {
         nodir: true
     })
     if (!srcFiles.length) {
-        console.error(`  \u{1F602} dist is not empty, ${utilName} application will exit`)
+        console.error(`  \u{1F602} src not empty, ${utilName} application will exit`)
         process.exit()
     } else {
         return new Promise((resolve, reject) => {
