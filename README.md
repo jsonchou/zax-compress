@@ -25,5 +25,5 @@ compress({
 
 ## TODO
 
-## print compress loss log
-## list skip ignore images
+* print compress loss log
+* list skip ignore images

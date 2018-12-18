@@ -25,6 +25,7 @@
   "private": false,
   "dependencies": {
     "async": "^2.6.1",
+    "base64-img": "^1.0.4",
     "done-rainbow": "0.0.1",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
