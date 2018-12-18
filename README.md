@@ -1,5 +1,5 @@
 # ZAX Compress images
-## use mozjpeg to compress images 
+## compress & base64 images 
 
 ## install
 
@@ -11,27 +11,25 @@ npm i zax-compress -D
 
 ~~~ javascript 
 const compress = require('zax-compress')
-or
-import compress from 'zax-compress'
 
 # tiny
 compress.tiny({
     quality: 75,
     enumFormat: ['.jpeg', '.jpg', '.png'],
-    imageSrc: './src',
-    imageDist: './dist',
+    imageSrc: path.resolve(__dirname, 'src'),
+    imageDist: path.resolve(__dirname, 'dist'),
 })
 
 # base64
 compress.base64({
     enumFormat: ['.jpeg', '.jpg', '.png'],
-    imageSrc: './src',
-    imageDist: './dist',
+    imageSrc: path.resolve(__dirname, 'src'),
+    imageDist: path.resolve(__dirname, 'dist'),
 })
 
 # clean
 compress.base64({
-    imageDist: './dist',
+    imageDist: path.resolve(__dirname, 'dist'),
 })
 ~~~
 

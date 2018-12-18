@@ -1,6 +1,6 @@
-const tiny = require('./esm/tiny')
-const base64 = require('./esm/base64')
-const clean = require('./esm/clean')
+const tiny = require('./modules/tiny')
+const base64 = require('./modules/base64')
+const clean = require('./modules/clean')
 
 class COMPRESS {
 

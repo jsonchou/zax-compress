@@ -1,3 +1,5 @@
+
+const path = require('path');
 let compress = require('../index')
 
 let config = require('./cfg') 
