@@ -7,7 +7,7 @@ const doneRainbow = require('done-rainbow')
 
 function clean() {
     fs.removeSync(path.resolve(config.imageDist))
-    doneRainbow('\u{1F60E} --> done!')
+    doneRainbow('\u{1F60E} done!')
 }
 
 clean();

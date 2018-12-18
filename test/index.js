@@ -6,4 +6,11 @@ let compress = new COMPRESS({
     ...config
 })
 
-compress.init()
+const getResult = async () => {
+    let result = await compress.init().catch(err => {
+        // console.log(err)
+    })
+    return result
+}
+ 
+// console.log(getResult())

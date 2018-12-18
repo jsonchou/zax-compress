@@ -10,9 +10,17 @@ npm i zax-compress -D
 ## use
 
 ~~~ javascript 
-const zaxCompress = require('zax-compress')
+const compress = require('zax-compress')
 or
-import zaxCompress from 'zax-compress'
+import compress from 'zax-compress'
+
+compress({
+    quality: 75,
+    enumFormat: ['.jpeg', '.jpg', '.png'],
+    imageSrc: 'src',
+    imageDist: 'dist',
+})
+
 ~~~
 
 ## TODO
