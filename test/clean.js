@@ -1,13 +1,15 @@
-const fs = require('fs-extra')
-const path = require('path');
+let zaxCompress = require('../index')
 
 let config = require('./cfg')
 
-const doneRainbow = require('done-rainbow')
+let compress = new zaxCompress()
 
-function clean() {
-    fs.removeSync(path.resolve(config.imageDist))
-    doneRainbow('\u{1F60E} done!')
+const getResult = async () => {
+
+    let result = await compress.clean(config).catch(err => {
+        console.log(err)
+    })
+    return result
 }
-
-clean();
+ 
+getResult()
