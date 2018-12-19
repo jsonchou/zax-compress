@@ -1,6 +1,6 @@
 {
   "name": "zax-compress",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "dsp team compress tools",
   "main": "./index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
     "klaw-sync": "^6.0.0",
-    "mozjpeg": "^6.0.1"
+    "mozjpeg": "^6.0.1",
+    "pngquant-bin": "^5.0.1"
   }
-
 }

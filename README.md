@@ -1,5 +1,5 @@
 # ZAX Compress images
-## compress & base64 images 
+## compress & base64 images with mozjpeg & pngquant
 
 ## install
 
