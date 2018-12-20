@@ -8,6 +8,9 @@ const klawSync = require('klaw-sync')
 const asyncModule = require('async')
 
 const utils = require('../utils/index')
+let {
+    emoji
+} = utils;
 
 const utilName = `compress.tiny`
 
@@ -98,7 +101,7 @@ module.exports = function (options) {
     }
 
     if (klawSync(distPath).length) {
-        console.error(`  \u{1F602} dist should be empty, you can use compress:clean to delete dist dir, ${utilName} application will exit`)
+        console.error(`  ${emoji.cry} dist should be empty, you can use compress:clean to delete dist dir, ${utilName} application will exit`)
         process.exit()
     }
 
@@ -106,7 +109,7 @@ module.exports = function (options) {
         nodir: true
     })
     if (!srcFiles.length) {
-        console.error(`  \u{1F602} src should not be empty, ${utilName} application will exit`)
+        console.error(`  ${emoji.cry} src should not be empty, ${utilName} application will exit`)
         process.exit()
     } else {
         return new Promise((resolve, reject) => {
@@ -151,7 +154,7 @@ module.exports = function (options) {
                     throw err
                 }
                 results = results.filter(c => c != null)
-                // doneRainbow(`\u{1F60E} ${utilName} done!`)
+                // doneRainbow(`${emoji.cool} ${utilName} done!`)
                 resolve(results)
             })
         })

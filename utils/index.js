@@ -9,6 +9,10 @@ module.exports = {
         // console.log(`let base64Stream="data:image/${format};base64,`)
         return `let base64Stream="data:image/${format};base64,${stream}"`
     },
+    emoji:{
+        cool:'\u{1F60E}',
+        cry:'\u{1F602}',
+    },
     async wrapBin(bin, args, originStream) {
         return new Promise((resolve, reject) => {
             try {
