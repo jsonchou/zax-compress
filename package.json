@@ -1,6 +1,6 @@
 {
   "name": "zax-compress",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "dsp team compress tools",
   "main": "./index.js",
   "scripts": {
