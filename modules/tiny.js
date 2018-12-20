@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
-const execa = require('execa')
+
 const mozjpeg = require('mozjpeg')
 const pngquant = require('pngquant-bin')
 const doneRainbow = require('done-rainbow')
@@ -98,7 +98,7 @@ module.exports = function (options) {
     }
 
     if (klawSync(distPath).length) {
-        console.error(`  \u{1F602} dist should be empty, ${utilName} application will exit`)
+        console.error(`  \u{1F602} dist should be empty, you can use compress:clean to delete dist dir, ${utilName} application will exit`)
         process.exit()
     }
 
@@ -129,29 +129,10 @@ module.exports = function (options) {
 
                         if (['jpeg', 'jpg'].indexOf(filetype) > -1) {
                             let args = mozArgs(options);
-                            try {
-                                stream = await execa.stdout(mozjpeg, args, {
-                                    encoding: null,
-                                    input: originStream,
-                                    maxBuffer: Infinity
-                                })
-                            } catch (err) {
-                                console.log(err)
-                                throw err
-                            }
+                            stream = await utils.wrapBin(mozjpeg, args, originStream);
                         } else if (['png'].indexOf(filetype) > -1) {
                             let args = quantArgs(options, outPutPath, sub.path);
-
-                            try {
-                                stream = await execa.stdout(pngquant, args, {
-                                    encoding: null,
-                                    input: originStream,
-                                    maxBuffer: Infinity
-                                })
-                            } catch (err) {
-                                console.log(err)
-                                throw err
-                            }
+                            stream = await utils.wrapBin(pngquant, args, originStream);
                         }
 
                         let result = fs.outputFileSync(outPutPath, stream)
@@ -170,7 +151,7 @@ module.exports = function (options) {
                     throw err
                 }
                 results = results.filter(c => c != null)
-                doneRainbow(`\u{1F60E} ${utilName} done!`)
+                // doneRainbow(`\u{1F60E} ${utilName} done!`)
                 resolve(results)
             })
         })

@@ -12,6 +12,6 @@ module.exports = options => {
         } catch (err) {
             reject(err)
         }
-        doneRainbow(`\u{1F60E} ${utilName} done!`)
+        // doneRainbow(`\u{1F60E} ${utilName} done!`)
     });
 }

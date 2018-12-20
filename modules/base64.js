@@ -35,7 +35,7 @@ module.exports = function (options) {
     }
 
     if (klawSync(distPath).length) {
-        console.error(`  \u{1F602} dist should be empty, ${utilName} application will exit`)
+        console.error(`  \u{1F602} dist should be empty, you can run [clean] to delete dist dir, ${utilName} application will exit`)
         process.exit()
     }
 
@@ -85,7 +85,7 @@ module.exports = function (options) {
                     throw err
                 }
                 results = results.filter(c => c != null)
-                doneRainbow(`\u{1F60E} ${utilName} done!`)
+                // doneRainbow(`\u{1F60E} ${utilName} done!`)
                 resolve(results)
             })
         })
