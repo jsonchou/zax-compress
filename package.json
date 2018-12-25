@@ -1,11 +1,9 @@
 {
   "name": "zax-compress",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "dsp team compress tools",
   "main": "./index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "engines": {
     "node": ">=8.0.0"
   },
@@ -28,9 +26,11 @@
   "dependencies": {
     "async": "^2.6.1",
     "base64-img": "^1.0.4",
-    "done-rainbow": "0.0.1",
+    "done-rainbow": "^0.1.2",
+    "exec-buffer": "^3.2.0",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
+    "gifsicle": "^4.0.1",
     "klaw-sync": "^6.0.0",
     "mozjpeg": "^6.0.1",
     "pngquant-bin": "^5.0.1"

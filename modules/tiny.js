@@ -1,8 +1,10 @@
 const fs = require('fs-extra')
 const path = require('path')
-
+const execa = require('execa')
+const execBuffer = require('exec-buffer');
 const mozjpeg = require('mozjpeg')
 const pngquant = require('pngquant-bin')
+const gifsicle = require('gifsicle')
 const doneRainbow = require('done-rainbow')
 const klawSync = require('klaw-sync')
 const asyncModule = require('async')
@@ -76,14 +78,24 @@ const quantArgs = (options) => {
     return args;
 }
 
+const gifArgs = (opts, outPutPath, path) => {
+    const args = ['--no-warnings', '--no-app-extensions']
+
+    if (opts.quality) {
+        let quality = Math.round((opts.quality * 3) / 100)
+        args.push(`--optimize=${quality}`)
+    }
+
+    // args.push('--output', outPutPath, path);
+    args.push('--output', execBuffer.output, execBuffer.input);
+
+    return args
+}
+
 module.exports = function (options) {
     options = Object.assign({}, config, options)
 
     let {
-        // moz compress configuration
-
-        // pngquant compress configuration
-
         imageSrc,
         imageDist
     } = options;
@@ -130,12 +142,27 @@ module.exports = function (options) {
                         let stream = ''
                         let originStream = fs.readFileSync(sub.path)
 
-                        if (['jpeg', 'jpg'].indexOf(filetype) > -1) {
+                        if (['jpeg', 'jpg'].includes(filetype)) {
                             let args = mozArgs(options);
-                            stream = await utils.wrapBin(mozjpeg, args, originStream);
-                        } else if (['png'].indexOf(filetype) > -1) {
-                            let args = quantArgs(options, outPutPath, sub.path);
-                            stream = await utils.wrapBin(pngquant, args, originStream);
+                            stream = await utils.wrapBin(mozjpeg, args, originStream)
+                        } else if (['png'].includes(filetype)) {
+                            let args = quantArgs(options)
+                            stream = await utils.wrapBin(pngquant, args, originStream)
+                        } else if (['gif'].includes(filetype)) {
+                            let args = gifArgs(options, outPutPath, sub.path);
+
+                            stream = await execBuffer({
+                                input: originStream,
+                                bin: gifsicle,
+                                args
+                            }).catch(error => {
+                                error.message = error.stderr || error.message;
+                                throw error;
+                            });
+
+                            // stream = await utils.wrapBin(gifsicle, args, originStream).catch(err => {
+                            //     console.log(err)
+                            // })
                         }
 
                         let result = fs.outputFileSync(outPutPath, stream)

@@ -9,9 +9,9 @@ module.exports = {
         // console.log(`let base64Stream="data:image/${format};base64,`)
         return `let base64Stream="data:image/${format};base64,${stream}"`
     },
-    emoji:{
-        cool:'\u{1F60E}',
-        cry:'\u{1F602}',
+    emoji: {
+        cool: '\u{1F60E}',
+        cry: '\u{1F602}',
     },
     async wrapBin(bin, args, originStream) {
         return new Promise((resolve, reject) => {
@@ -20,9 +20,12 @@ module.exports = {
                     encoding: null,
                     input: originStream,
                     maxBuffer: Infinity
+                }).catch(err => {
+                    console.log(err)
                 })
                 resolve(stream)
             } catch (err) {
+                console.log(err)
                 reject(err)
             }
         })
