@@ -4,6 +4,7 @@ const execa = require('execa')
 const execBuffer = require('exec-buffer');
 const mozjpeg = require('mozjpeg')
 const pngquant = require('pngquant-bin')
+const cwebp = require('cwebp-bin');
 const gifsicle = require('gifsicle')
 const doneRainbow = require('done-rainbow')
 const klawSync = require('klaw-sync')
@@ -16,7 +17,7 @@ let {
 
 const utilName = `compress.tiny`
 
-const _inFormats = function (options, path) {
+const _inFormats = function(options, path) {
     return options.enumFormat.some(item => path.lastIndexOf(item) > -1)
 }
 
@@ -92,12 +93,28 @@ const gifArgs = (opts, outPutPath, path) => {
     return args
 }
 
-module.exports = function (options) {
+
+const webpArgs = (opts, outPutPath, path) => {
+    const args = ['-quiet', '-mt']
+
+    if (opts.quality) {
+        args.push(`-q`, `${opts.quality}`)
+    }
+
+    // args.push('--output', outPutPath, path);
+    args.push('-o', execBuffer.output, execBuffer.input);
+
+    return args
+}
+
+
+module.exports = function(options) {
     options = Object.assign({}, config, options)
 
     let {
         imageSrc,
-        imageDist
+        imageDist,
+        convertToWebp = true,
     } = options;
 
     const srcPath = path.resolve(imageSrc)
@@ -163,6 +180,13 @@ module.exports = function (options) {
                             // stream = await utils.wrapBin(gifsicle, args, originStream).catch(err => {
                             //     console.log(err)
                             // })
+                        }
+
+                        if (convertToWebp) {
+                            if (['jpeg', 'jpg', 'png'].includes(sub.path)) {
+                                //convert to webp format
+                                
+                            }
                         }
 
                         let result = fs.outputFileSync(outPutPath, stream)
