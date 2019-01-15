@@ -12,6 +12,8 @@ module.exports = {
     emoji: {
         cool: '\u{1F60E}',
         cry: '\u{1F602}',
+        check: '\u{2714}',
+        info: '\u{2716}',
     },
     async wrapBin(bin, args, originStream) {
         return new Promise((resolve, reject) => {

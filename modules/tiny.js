@@ -1,6 +1,7 @@
 const fs = require('fs-extra')
 const path = require('path')
 const execa = require('execa')
+const chalk = require('chalk')
 const execBuffer = require('exec-buffer');
 const mozjpeg = require('mozjpeg')
 const pngquant = require('pngquant-bin')
@@ -79,7 +80,7 @@ const quantArgs = (options) => {
     return args;
 }
 
-const gifArgs = (opts, outPutPath, path) => {
+const gifArgs = (opts) => {
     const args = ['--no-warnings', '--no-app-extensions']
 
     if (opts.quality) {
@@ -93,8 +94,7 @@ const gifArgs = (opts, outPutPath, path) => {
     return args
 }
 
-
-const webpArgs = (opts, outPutPath, path) => {
+const webpArgs = (opts) => {
     const args = ['-quiet', '-mt']
 
     if (opts.quality) {
@@ -166,7 +166,7 @@ module.exports = function(options) {
                             let args = quantArgs(options)
                             stream = await utils.wrapBin(pngquant, args, originStream)
                         } else if (['gif'].includes(filetype)) {
-                            let args = gifArgs(options, outPutPath, sub.path);
+                            let args = gifArgs(options);
 
                             stream = await execBuffer({
                                 input: originStream,
@@ -182,10 +182,12 @@ module.exports = function(options) {
                             // })
                         }
 
+                        fs.outputFileSync(outPutPath, stream)
+
                         if (convertToWebp) {
-                            if (['jpeg', 'jpg', 'png'].includes(sub.path)) {
+                            if (['jpeg', 'jpg', 'png'].includes(filetype)) {
                                 //convert to webp format
-                                let args = webpArgs(options, outPutPath, sub.path);
+                                let args = webpArgs(options);
                                 stream = await execBuffer({
                                     input: originStream,
                                     bin: cwebp,
@@ -194,17 +196,18 @@ module.exports = function(options) {
                                     error.message = error.stderr || error.message;
                                     throw error;
                                 });
+                                let tmp = outPutPath.replace('.' + filetype, '.webp')
+                                fs.outputFileSync(tmp, stream)
                             }
                         }
-
-                        let result = fs.outputFileSync(outPutPath, stream)
+                        console.log(chalk.green(utils.emoji.check) + ' ' + chalk.green(outPutPath))
                         return outPutPath
                     } catch (err) {
                         console.error(err)
                         return err;
                     }
                 } else {
-                    console.log('not correct format:', sub.path)
+                    console.log(chalk.yellow(utils.emoji.info) + ' ' + chalk.yellow('not correct format:' + sub.path))
                     return null
                 }
             }, (err, results) => {
