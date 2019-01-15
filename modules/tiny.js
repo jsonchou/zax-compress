@@ -185,7 +185,15 @@ module.exports = function(options) {
                         if (convertToWebp) {
                             if (['jpeg', 'jpg', 'png'].includes(sub.path)) {
                                 //convert to webp format
-                                
+                                let args = webpArgs(options, outPutPath, sub.path);
+                                stream = await execBuffer({
+                                    input: originStream,
+                                    bin: cwebp,
+                                    args
+                                }).catch(error => {
+                                    error.message = error.stderr || error.message;
+                                    throw error;
+                                });
                             }
                         }
 

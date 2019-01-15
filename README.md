@@ -1,5 +1,5 @@
 # ZAX Compress images
-## compress & base64 images with mozjpeg & pngquant
+## compress & base64 images with mozjpeg & pngquant & 
 
 ## install
 
@@ -15,6 +15,7 @@ const compress = require('zax-compress')
 # tiny
 compress.tiny({
     quality: 75,
+    convertToWebp:true,
     enumFormat: ['.jpeg', '.jpg', '.png'],
     imageSrc: path.resolve(__dirname, 'src'),
     imageDist: path.resolve(__dirname, 'dist'),
@@ -36,4 +37,4 @@ compress.base64({
 ## TODO
 
 * print compress loss log
-* list skip ignore images
+* ~~~list skip ignore images~~~
