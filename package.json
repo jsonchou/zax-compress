@@ -1,40 +1,44 @@
 {
-  "name": "zax-compress",
-  "version": "1.0.4",
-  "description": "dsp team compress tools",
-  "main": "./index.js",
-  "scripts": {},
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "keywords": [
-    "zax-compress",
-    "compress",
-    "tiny",
-    "base64",
-    "compress-image",
-    "mozjpeg"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jsonchou/zax-compress.git"
-  },
-  "homepage": "https://github.com/jsonchou/zax-compress",
-  "author": "jsonchou",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "async": "^2.6.1",
-    "base64-img": "^1.0.4",
-    "chalk": "^2.4.2",
-    "cwebp-bin": "^5.0.0",
-    "done-rainbow": "^0.1.2",
-    "exec-buffer": "^3.2.0",
-    "execa": "^1.0.0",
-    "fs-extra": "^7.0.1",
-    "gifsicle": "^4.0.1",
-    "klaw-sync": "^6.0.0",
-    "mozjpeg": "^6.0.1",
-    "pngquant-bin": "^5.0.1"
-  }
+    "name": "zax-compress",
+    "version": "1.0.5",
+    "description": "dsp team compress tools",
+    "main": "./index.js",
+    "scripts": {
+        "compress:clean": "node ./test/clean.js",
+        "compress:tiny": "node ./test/tiny.js",
+        "compress:base64": "node ./test/base64.js"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "keywords": [
+        "zax-compress",
+        "compress",
+        "tiny",
+        "base64",
+        "compress-image",
+        "mozjpeg"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jsonchou/zax-compress.git"
+    },
+    "homepage": "https://github.com/jsonchou/zax-compress",
+    "author": "jsonchou",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "async": "^2.6.1",
+        "base64-img": "^1.0.4",
+        "chalk": "^2.4.2",
+        "cwebp-bin": "^5.0.0",
+        "done-rainbow": "^0.1.2",
+        "exec-buffer": "^3.2.0",
+        "execa": "^1.0.0",
+        "fs-extra": "^7.0.1",
+        "gifsicle": "^4.0.1",
+        "klaw-sync": "^6.0.0",
+        "mozjpeg": "^6.0.1",
+        "pngquant-bin": "^5.0.1"
+    }
 }

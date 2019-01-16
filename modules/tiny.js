@@ -130,7 +130,7 @@ module.exports = function(options) {
     }
 
     if (klawSync(distPath).length) {
-        console.error(`  ${emoji.cry} dist should be empty, you can use compress:clean to delete dist dir, ${utilName} application will exit`)
+        console.error(`${emoji.cry} dist should be empty, you can use ${chalk.green('compress:clean')} to delete dist dir, ${utilName} application will exit`)
         process.exit()
     }
 
@@ -138,7 +138,7 @@ module.exports = function(options) {
         nodir: true
     })
     if (!srcFiles.length) {
-        console.error(`  ${emoji.cry} src should not be empty, ${utilName} application will exit`)
+        console.error(`${emoji.cry} src should not be empty, ${utilName} application will exit`)
         process.exit()
     } else {
         return new Promise((resolve, reject) => {

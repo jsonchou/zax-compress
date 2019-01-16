@@ -1,5 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path');
+const chalk = require('chalk');
 const doneRainbow = require('done-rainbow')
 const klawSync = require('klaw-sync')
 const asyncModule = require('async')
@@ -38,7 +39,7 @@ module.exports = function (options) {
     }
 
     if (klawSync(distPath).length) {
-        console.error(`  ${emoji.cry} dist should be empty, you can run compress:clean to delete dist dir, ${utilName} application will exit`)
+        console.error(`${emoji.cry} dist should be empty, you can run ${chalk.green('compress:clean')} to delete dist dir, ${utilName} application will exit`)
         process.exit()
     }
 
@@ -46,7 +47,7 @@ module.exports = function (options) {
         nodir: true
     })
     if (!srcFiles.length) {
-        console.error(`  ${emoji.cry} src should not be empty, ${utilName} application will exit`)
+        console.error(`${emoji.cry} src should not be empty, ${utilName} application will exit`)
         process.exit()
     } else {
         return new Promise((resolve, reject) => {
