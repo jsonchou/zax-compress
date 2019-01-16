@@ -182,7 +182,11 @@ module.exports = function(options) {
                             // })
                         }
 
-                        fs.outputFileSync(outPutPath, stream)
+                        //.webp did not tiny
+
+                        if (stream) {
+                            fs.outputFileSync(outPutPath, stream)
+                        }
 
                         if (convertToWebp) {
                             if (['jpeg', 'jpg', 'png'].includes(filetype)) {

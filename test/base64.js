@@ -9,6 +9,7 @@ let {
 } = utils;
 
 const getResult = async () => {
+    console.log('we suggest a webp fromat should be a better way to convert a base64 file')
     let result = await compress.base64(config).catch(err => {
         console.log(err)
     })
