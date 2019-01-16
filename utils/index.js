@@ -14,6 +14,8 @@ module.exports = {
         cry: '\u{1F602}',
         check: '\u{2714}',
         info: '\u{2716}',
+        warn:'\u{26A0}',
+        tip:'\u{1F4A1}'
     },
     async wrapBin(bin, args, originStream) {
         return new Promise((resolve, reject) => {
