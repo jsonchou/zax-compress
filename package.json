@@ -28,7 +28,7 @@
     "license": "MIT",
     "private": false,
     "dependencies": {
-        "async": "^2.6.1",
+        "async": "^3.2.2",
         "base64-img": "^1.0.4",
         "chalk": "^2.4.2",
         "cwebp-bin": "^5.0.0",
